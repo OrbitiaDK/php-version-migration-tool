@@ -1,0 +1,5 @@
+.DS_Store
+
+logs/
+mariadb/init_db.sql
+wp-site/
