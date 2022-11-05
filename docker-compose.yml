@@ -1,0 +1,41 @@
+version: "3"
+services:
+  db:
+    build:
+      context: .
+      dockerfile: mariadb/Dockerfile
+    restart: always
+    networks:
+      - internal
+    environment:
+      - MYSQL_ROOT_PASSWORD=<password>
+      - MYSQL_DATABASE=<database>
+      - MYSQL_USER=<user>
+      - MYSQL_PASSWORD=<password>
+    ports: 
+      - "33060:3306"
+    expose:
+      - 3306
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports: 
+      - "8080:80"
+    networks:
+      - internal
+    volumes:
+      - ./wp-site/:/var/www/html/
+      - ./logs/nginx:/var/log/nginx/
+  php:
+    build:
+      context: .
+      dockerfile: php7/Dockerfile
+    networks:
+      - internal
+    volumes:
+      - ./wp-site/:/var/www/html/
+      - ./logs/php.log:/var/log/fpm-php.www.log
+networks:
+  internal:
+    driver: bridge

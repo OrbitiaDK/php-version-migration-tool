@@ -5,3 +5,8 @@
 3. Put the database as sql-script into a file called `init_db.sql` and save it in the `mariadb` folder
 4. Run `docker-compose build php` to update the version
 5. Run `docker-compose up` to start the services
+
+## Note:
+
+* Update database configuration in `docker-compose.yml` and `wp-site/wp-config.php`
+* Site will be accessible on `localhost:8080`. In some cases, https needs to be disabled by disabling a plugin. It might also be necessary to change site address in the database.
