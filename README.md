@@ -10,3 +10,4 @@
 
 * Update database configuration in `docker-compose.yml` and `wp-site/wp-config.php`
 * Site will be accessible on `localhost:8080`. In some cases, https needs to be disabled by disabling a plugin. It might also be necessary to change site address in the database.
+* Database will be accessible on `localhost:33060`.
